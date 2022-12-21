@@ -3,9 +3,9 @@ import React from 'react';
 
 const Link = (props) => {
     const {name, link} = props.route;
-    console.log(name,link)
+    // console.log(name,link)
     return (
-            <li> 
+            <li className='mr-12'> 
                 <a href={link}>{name}</a>
             </li>
     );
