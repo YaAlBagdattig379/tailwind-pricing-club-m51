@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from '../Link/Link';
-import {Bars3Icon } from '@heroicons/react/24/solid'
+import {Bars3Icon ,XMarkIcon} from '@heroicons/react/24/solid'
 const Navbar = () => {
+    const [open,setOpen] = useState(false);// state use for double burger icon
     const routes = [
         {id:1,name:'Home',link:'./home'},
         {id:2,name:'Shop',link:'./shop'},
@@ -11,10 +12,11 @@ const Navbar = () => {
     ]
     return (
         <nav>
-            <div className='w-6 h-6 md:hidden'> 
-                <Bars3Icon></Bars3Icon>
+            <div onClick={()=> setOpen(!open)} className='w-6 h-6 md:hidden'> 
+                {open ? <XMarkIcon></XMarkIcon> : <Bars3Icon></Bars3Icon> }
             </div>
-            <ul className='md:flex justify-center'>
+            {/* <ul className='md:flex justify-center'> */}
+            <ul className={`md:flex justify-center absolute duration-700 ease-in ${open ? 'top-6':'top-[-120px]'}`}>
                 {
                     routes.map(route => <Link
                     key= {route.id}
